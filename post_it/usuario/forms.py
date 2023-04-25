@@ -1,6 +1,7 @@
 from django import forms
-from .models import Categoria, Postit
+from .models import Postit
 
-class PostItForm(forms.Form):
-    descricao = forms.CharField(max_length=250)
-    categoria = forms.ModelChoiceField(queryset=Categoria.objects.all())
+class PostItForm(forms.ModelForm):
+    class Meta:
+        model  = Postit
+        fields = ['categoria', 'descricao']
