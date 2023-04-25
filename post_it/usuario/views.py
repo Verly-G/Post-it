@@ -9,7 +9,6 @@ def index (request):
         if form.is_valid():
             form.save()
             form = PostItForm()
-
     context={
         'form': form
     }
