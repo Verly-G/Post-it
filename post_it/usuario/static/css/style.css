@@ -1,0 +1,12 @@
+#local_post{
+    width: 95vw;
+    justify-content: center;
+    align-items: center;
+}
+#local_post div{
+    margin-left: 30px;
+    padding: 20px;
+}
+#local_post div h1{
+    font-size: 25px;
+}

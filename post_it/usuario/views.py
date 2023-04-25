@@ -10,6 +10,7 @@ def index (request):
             form.save()
             form = PostItForm()
     context={
-        'form': form
+        'form': form,
+        'posts': Postit.objects.all()
     }
     return render(request, 'index.html', context)
