@@ -12,7 +12,7 @@
     <title>Post-it</title>
 </head>
 
-<body>
+<body class="container-fluid">
     <header>
         <div class="justify-content-center d-flex">
             <div class="row mt-5 mb-5">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-4 shadow mt-5 p-4 ms-5">
                     <h2 class="mb-4">Categoria: </h2>
-                    <select>
+                    <select class="form-select">
                         <option value="Todos" selected>Todos</option>
                         {% for categoria in categorias %}
                             <option value="{{categoria}}">{{categoria}}</option>
@@ -56,20 +56,23 @@
                 </div>
             </div>
         </div>
-    </main>
-    <div id="local_post" class="d-flex col-3">
-        {% for post in posts %}
-            <div class="shadow bg-warning">
-                <h1>Categoria:</h1>
-                <p id="categoria_usada">{{post.categoria}}</p>
-                <h1>Descrição:</h1>
-                {{post.descricao}}
-                <br>
-                <h1>Data:</h1>
-                {{post.data}}
+        <div class="row">
+            <div id="local_post" class="d-flex flex-wrap">
+                {% for post in posts %}
+                    <div class="shadow bg-warning col-3 mb-3">
+                        <h1>Categoria:</h1>
+                        <p id="categoria_usada">{{post.categoria}}</p>
+                        <h1>Descrição:</h1>
+                        {{post.descricao}}
+                        <br>
+                        <h1>Data:</h1>
+                        {{post.data}}
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
-    </div>
+           </div>
+    </main>
+   
     <footer>
 
     </footer>
