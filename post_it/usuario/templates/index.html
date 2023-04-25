@@ -22,8 +22,11 @@
                 </div>
                 <div class="col-4 shadow mt-5 p-4 ms-5">
                     <h2 class="mb-4">Categoria: </h2>
-                    <select name="categoria" id="id_categora">
-                        <option value="0">Escolher</option>
+                    <select>
+                        <option value="Todos" selected>Todos</option>
+                        {% for categoria in categorias %}
+                            <option value="{{categoria}}">{{categoria}}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -58,8 +61,7 @@
         {% for post in posts %}
             <div class="shadow bg-warning">
                 <h1>Categoria:</h1>
-                {{post.categoria}}
-                <br>
+                <p id="categoria_usada">{{post.categoria}}</p>
                 <h1>Descrição:</h1>
                 {{post.descricao}}
                 <br>

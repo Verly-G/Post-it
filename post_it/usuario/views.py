@@ -11,6 +11,7 @@ def index (request):
             form = PostItForm()
     context={
         'form': form,
-        'posts': Postit.objects.all()
+        'posts': Postit.objects.all(),
+        'categorias': Categoria.objects.all() 
     }
     return render(request, 'index.html', context)
