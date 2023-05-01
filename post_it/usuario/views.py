@@ -3,14 +3,16 @@ from .models import Categoria, Postit
 from .forms import PostItForm
 
 def index (request):
-    form = PostItForm()
+    PostIfform = PostItForm()
     if request.method == 'POST':
-        form = PostItForm(request.POST)
-        if form.is_valid():
-            form.save()
-            form = PostItForm()
+        PostIfform = PostItForm(request.POST)
+        if PostIfform.is_valid():
+            PostIfform.save()
+            PostIfform = PostItForm()
+    #if request.method == 'DELETE'
+        
     context={
-        'form': form,
+        'form': PostIfform,
         'posts': Postit.objects.all(),
         'categorias': Categoria.objects.all() 
     }

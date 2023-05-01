@@ -10,3 +10,7 @@
 #local_post div h1{
     font-size: 25px;
 }
+
+.hiddenPost{
+	display:none;
+}
