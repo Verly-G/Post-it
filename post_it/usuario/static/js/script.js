@@ -14,7 +14,7 @@ const filterPostIt = filter => {
 	}
 	for (let i = 0; i < numPostIt; i++) {
 		let postIt = $localPost.children[i];
-		let postItCategory = postIt.children[3].textContent;//Fará com qe seja captura o valor do paragráfo que guarda a informação da categória
+		let postItCategory = postIt.children[3].textContent;//Fará com que será capturado o valor do paragráfo que guarda a informação da categória
 		postItCategory == filter ? postIt.classList.remove("hiddenPost") : postIt.classList.add("hiddenPost");
 	}
 };
