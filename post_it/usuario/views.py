@@ -17,3 +17,9 @@ def index (request):
         'categorias': Categoria.objects.all() 
     }
     return render(request, 'index.html', context)
+
+def excluir(request, id):
+    postit = Postit.objects.get(id=id)
+    postit.delete()
+    return "O post com {id} foi excluido!"
+    
