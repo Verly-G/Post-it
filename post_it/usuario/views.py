@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Categoria, Postit
 from .forms import PostItForm
+from django.http import JsonResponse
+from django.core.serializers import serialize
 
 def index (request):
     PostIfform = PostItForm()
@@ -9,7 +11,6 @@ def index (request):
         if PostIfform.is_valid():
             PostIfform.save()
             PostIfform = PostItForm()
-    #if request.method == 'DELETE'
         
     context={
         'form': PostIfform,
@@ -21,5 +22,4 @@ def index (request):
 def excluir(request, id):
     postit = Postit.objects.get(id=id)
     postit.delete()
-    return "O post com {id} foi excluido!"
-    
+    return JsonResponse("Foi excluído", safe=False)

@@ -5,7 +5,9 @@ function excluirPost (e){
  let configMetodo = {
     method: 'DELETE',
     body: JSON.stringify(id),
-    headers: {'Content-Type':'application/json;charset=UTF-8'}
+    headers: {'Content-Type':'application/json;charset=UTF-8',
+                'X-CSRFToken': 'hndwTvTJi51jfoM2Oe6SkkqxjMcsCrkyHhL3jLobLB1IyWv006gsfwq4L79TaCDE'
+            }
  }
  fetch(`remover/${id}`, configMetodo)
     .then(resposta =>{
@@ -14,11 +16,9 @@ function excluirPost (e){
             throw new Error(msg)
         }
         else
-            excluirHTMLPostIt(id);
+            e.parentNode.remove()
     })
     .catch(error =>{
         console.log(error);
     })
 }
-
-const excluirHTMLPostIt = id => {}
