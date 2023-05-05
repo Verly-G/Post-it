@@ -78,33 +78,12 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="modal-formulario-alterar" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Alterando Post-It</h4>
-                    </div>
-                    <div class="modal-body" >
-                        <!-- Formulario aqui -->
-                        <form id="form-alterar" method="PUT" class="d-flex flex-column">
-                            {% csrf_token %}
-                            <input  id="alterar" type="submit" value="Alterar">
-                            <input type="reset" value="Limpar">
-                        </form>
-                        <!-- Fim do formulario -->
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-danger btn-sm btn-fechar-jquery-alterar">Fechar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div id="local_post" class="d-flex flex-wrap">
                 {% for post in posts %}
                     <div class="shadow bg-warning col-3 mb-3">
-                        <button onclick="excluirPost(this)" data-id="{{post.id}}" class="btn-excluir btn-sm btn btn-danger">Excluir</button>
-                        <a href="#" class="btn-alterar-jquery">Alterar</a>
+                        <button onClick = "deletePost(this)"class="btn-excluir btn-sm btn btn-danger" data-id="{{post.id}}">Excluir</button>
+                        <button class="btn-alterar-jquery">Alterar</button>
                         <h1>Categoria:</h1>
                         <p id="categoria_usada">{{post.categoria}}</p>
                         <h1>Descrição:</h1>
