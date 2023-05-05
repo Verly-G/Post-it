@@ -26,7 +26,7 @@ const deletePost = element => {
     }
     fetch(`remover/${id}`, configMetodo)
         .then(resposta => {
-            if (!resposta.ok == true) {
+            if(!resposta.ok) {
                 let msg = `${resposta.status} - ${resposta.statusText}`;
                 throw new Error(msg)
             }
