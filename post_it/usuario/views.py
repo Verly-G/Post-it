@@ -15,7 +15,7 @@ def index (request):
         
     context={
         'form': PostIfform,
-        'posts': Postit.objects.all(),
+        'posts': Postit.objects.all().order_by('-id'),
         'categorias': Categoria.objects.all() 
     }
     return render(request, 'index.html', context)
@@ -28,18 +28,23 @@ def excluir(request, id):
 
 # def alterar(request, id):
     
-
-
 def buscar(request, id):
     post = Postit.objects.get(id=id)
     categorias = Categoria.objects.all()
-    listaCategorias = []
+    listaCategorias = {}
     for categoria in categorias:
-        listaCategorias.append(categoria)
 
-    context={
+        listaCategorias[categoria.id]=categoria.nome
+    print(listaCategorias)
+    data={
         'categoria': listaCategorias,
         'post_descricao': post.descricao
     }
     
-    return JsonResponse(context, safe=False)
+    return JsonResponse(data, safe=False)
+
+def alterar(request, id):
+    if request.method == 'PUT':
+        # post = Postit.objects.get(id=id)
+        print(request.POST)
+    return ''

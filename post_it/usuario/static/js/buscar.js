@@ -1,29 +1,29 @@
-function fetchBuscar(id){   
+const selectCategoria = document.querySelector("#categoria_alterar")
+const inputDescricao = document.querySelector("#descricao_alterar")
+
+function fetchBuscar(id) {
     fetch(`buscar/${id}`)
-        .then(resposta => {
-            if(!resposta.ok){
-                let msg = `${resposta.status} - ${resposta.statusText}`
-                throw new Error(msg)
+        .then(response => {
+            if (!response.ok) {
+                let msg = `${response.status} - ${response.statusText}`;
+                throw new Error(msg);
             }
-            else
-                resposta.json()
+            return response.json()
         })
-        .then(respostaJSON =>{
-            montarForm(respostaJSON)
+        .then(data => {
+            const categoria = data.categoria;
+            const postDescricao = data.post_descricao;
+            montarForm(categoria, postDescricao)
         })
-        .catch(erro => {
-            console.error(erro)
-        })
+        .catch(error => console.error(error));
 }
 
-function montarForm(dados){
-    let inputCategoria = document.querySelector("#categoria_alterar")
-    let inputDescricao = document.querySelector("#descricao_alterar")
-    console.log(dados);
-    // montarSelectCategoria(inputCategoria, dados.categoria)
-
-}
-
-// function montarSelectCategoria(input){
-
-// }
+function montarForm(categoria, post) {
+    for (let i in categoria) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = categoria[i];
+        selectCategoria.appendChild(option);
+    }
+    inputDescricao.value = post;
+};
